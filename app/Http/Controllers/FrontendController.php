@@ -192,7 +192,7 @@ class FrontendController extends Controller
             if(!empty($data['price_range'])){
                 $priceRangeURL .='&price='.$data['price_range'];
             }
-            if(request()->is('e-shop.loc/product-grids')){
+            if(request()->is('.loc/product-grids')){
                 return redirect()->route('product-grids',$catURL.$brandURL.$priceRangeURL.$showURL.$sortByURL);
             }
             else{
