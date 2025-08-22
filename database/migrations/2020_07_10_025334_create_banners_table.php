@@ -18,6 +18,7 @@ class CreateBannersTable extends Migration
             $table->string('title');
             $table->string('slug')->unique();
             $table->string('photo')->nullable();
+            $table->text('text')->nullable();
             $table->text('description')->nullable();
             $table->enum('status',['active','inactive'])->default('inactive');
             $table->timestamps();

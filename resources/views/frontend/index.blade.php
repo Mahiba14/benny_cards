@@ -3,7 +3,7 @@
 @section('main-content')
 <!-- Slider Area -->
 @if(count($banners)>0)
-    <section id="Gslider" class="carousel slide" data-ride="carousel">
+    <section id="Gslider" class="carousel slide" data-ride="carousel" data-interval="10000">
         <ol class="carousel-indicators">
             @foreach($banners as $key=>$banner)
         <li data-target="#Gslider" data-slide-to="{{$key}}" class="{{(($key==0)? 'active' : '')}}"></li>
@@ -16,6 +16,7 @@
                     <img class="first-slide" src="{{$banner->photo}}" alt="First slide">
                     <div class="carousel-caption d-none d-md-block text-left">
                         <h1 class="wow fadeInDown">{{$banner->title}}</h1>
+                         <h3 class="wow fadeInUp">{{$banner->text}}</h3>
                         <p>{!! html_entity_decode($banner->description) !!}</p>
                         <a class="btn btn-lg ws-btn wow fadeInUpBig" href="{{route('product-grids')}}" role="button">Shop Now<i class="far fa-arrow-alt-circle-right"></i></i></a>
                     </div>
@@ -27,7 +28,7 @@
         <span class="sr-only">Previous</span>
         </a>
         <a class="carousel-control-next" href="#Gslider" role="button" data-slide="next">
-        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="carousel-control-ne    xt-icon" aria-hidden="true"></span>
         <span class="sr-only">Next</span>
         </a>
     </section>

@@ -67,7 +67,7 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        //
+       
     }
 
     /**

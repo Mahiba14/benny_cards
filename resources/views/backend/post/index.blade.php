@@ -28,18 +28,7 @@
               <th>Action</th>
             </tr>
           </thead>
-          <tfoot>
-            <tr>
-              <th>S.N.</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Tag</th>
-              <th>Author</th>
-              <th>Photo</th>
-              <th>Status</th>
-              <th>Action</th>
-            </tr>
-          </tfoot>
+          
           <tbody>
            
             @foreach($posts as $post)   
@@ -75,6 +64,15 @@
                         @endif
                     </td>
                     <td>
+                      <!-- View Button -->
+<button type="button" class="btn btn-info btn-sm float-left mr-1"
+  data-toggle="modal"
+  data-target="#viewModal{{$post->id}}"
+  style="height:30px; width:30px;border-radius:50%"
+  title="View">
+  <i class="fas fa-eye"></i>
+</button>
+
                         <a href="{{route('post.edit',$post->id)}}" class="btn btn-primary btn-sm float-left mr-1" style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" title="edit" data-placement="bottom"><i class="fas fa-edit"></i></a>
                     <form method="POST" action="{{route('post.destroy',[$post->id])}}">
                       @csrf 
@@ -82,6 +80,51 @@
                           <button class="btn btn-danger btn-sm dltBtn" data-id={{$post->id}} style="height:30px; width:30px;border-radius:50%" data-toggle="tooltip" data-placement="bottom" title="Delete"><i class="fas fa-trash-alt"></i></button>
                         </form>
                     </td>
+                    <!-- View Modal -->
+<div class="modal fade" id="viewModal{{$post->id}}" tabindex="-1" role="dialog"
+  aria-labelledby="viewModalLabel{{$post->id}}" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title">Post Details</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+         <p><strong>ID:</strong> {{ $post->id }}</p>
+        <p><strong>Title:</strong> {{ $post->title }}</p>
+        <p><strong>Category:</strong> {{ $post->cat_info->title }}</p>
+        <p><strong>Tags:</strong> {{ $post->tags }}</p>
+        <p><strong>Author:</strong> 
+          @foreach($author_info as $data)
+            {{ $data->name }}
+          @endforeach
+        </p>
+        <p><strong>Status:</strong>
+          @if($post->status=='active')
+            <span class="badge badge-success">{{$post->status}}</span>
+          @else
+            <span class="badge badge-warning">{{$post->status}}</span>
+          @endif
+        </p>
+        <p><strong>Photo:</strong></p>
+        @if($post->photo)
+          <img src="{{asset($post->photo)}}" class="img-fluid" style="max-width:300px">
+        @else
+          <img src="{{asset('backend/img/thumbnail-default.jpg')}}" class="img-fluid" style="max-width:300px">
+        @endif
+      </div>
+
+      <div class="modal-footer d-flex justify-content-center">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
                 </tr>  
             @endforeach
           </tbody>
