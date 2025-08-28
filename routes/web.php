@@ -140,6 +140,8 @@
         Route::resource('banner', 'BannerController');
         // Brand
         Route::resource('brand', 'BrandController');
+        // Price Range
+        Route::resource('price-range', 'PriceRangeController');
         // Profile
         Route::get('/profile', [AdminController::class, 'profile'])->name('admin-profile');
         Route::post('/profile/{id}', [AdminController::class, 'profileUpdate'])->name('profile-update');

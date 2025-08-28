@@ -68,7 +68,7 @@
       </button>
       </div>
       <div class="modal-body">
-      <p><strong>ID:</strong> {{ $brand->title }}</p>
+      <p><strong>ID:</strong> {{ $brand->id }}</p>
       <p><strong>Title:</strong> {{ $brand->title }}</p>
       <p><strong>Slug:</strong> {{ $brand->slug }}</p>
       <p><strong>Status:</strong>

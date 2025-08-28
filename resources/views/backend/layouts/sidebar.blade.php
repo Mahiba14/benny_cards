@@ -69,6 +69,22 @@
         </div>
     </li>
 
+<!-- Price Ranges -->
+    <li class="nav-item">
+    <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#priceRangeCollapse" aria-expanded="true" aria-controls="priceRangeCollapse">
+        <i class="fas fa-money-bill"></i>
+        <span>Price Range</span>
+    </a>
+    <div id="priceRangeCollapse" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+            <h6 class="collapse-header">Price Range Options:</h6>
+            <a class="collapse-item" href="{{ route('price-range.index') }}">Price Range</a>
+            <a class="collapse-item" href="{{ route('price-range.create') }}">Add Price Range</a>
+        </div>
+    </div>
+</li>
+
+
      {{-- Brands --}}
      <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#brandCollapse" aria-expanded="true" aria-controls="brandCollapse">

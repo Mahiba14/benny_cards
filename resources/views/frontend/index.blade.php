@@ -37,36 +37,32 @@
 <!--/ End Slider Area -->
 
 <!-- Start Small Banner  -->
-<section class="small-banner section">
-    <div class="container-fluid">
-        <div class="row">
+<!-- Wedding Cards by Religion Section -->
+<section class="religion-cards section">
+    <div class="container">
+        <div class="row justify-content-center">
             @php
-            $category_lists=DB::table('categories')->where('status','active')->limit(3)->get();
+                $category_lists = DB::table('categories')->where('status','active')->where('is_parent',1)->limit(5)->get();
             @endphp
-            @if($category_lists)
-                @foreach($category_lists as $cat)
-                    @if($cat->is_parent==1)
-                        <!-- Single Banner  -->
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <div class="single-banner">
-                                @if($cat->photo)
-                                    <img src="{{$cat->photo}}" alt="{{$cat->photo}}">
-                                @else
-                                    <img src="https://via.placeholder.com/600x370" alt="#">
-                                @endif
-                                <div class="content">
-                                    <h3>{{$cat->title}}</h3>
-                                        <a href="{{route('product-cat',$cat->slug)}}">Discover Now</a>
-                                </div>
-                            </div>
+            @foreach($category_lists as $cat)
+                <div class="col-lg-2 col-md-4 col-sm-6 mb-4">
+                    <div class="card category-card">
+                        @if($cat->photo)
+                            <img src="{{ $cat->photo }}" class="card-img" alt="{{ $cat->photo }}">
+                        @else
+                            <img src="https://via.placeholder.com/400x400" class="card-img" alt="#">
+                        @endif
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title text-white font-weight-bold">{{ $cat->title }}</h5>
+                            <a href="{{ route('product-cat', $cat->slug) }}" class="btn btn-success mt-2">Shop Now</a>
                         </div>
-                    @endif
-                    <!-- /End Single Banner  -->
-                @endforeach
-            @endif
+                    </div>
+                </div>
+            @endforeach
         </div>
     </div>
 </section>
+
 <!-- End Small Banner -->
 
 <!-- Start Product Area -->
@@ -126,8 +122,6 @@
                                                 @else
                                                     <span class="price-dec">{{$product->discount}}% Off</span>
                                                 @endif
-
-
                                             </a>
                                             <div class="button-head">
                                                 <div class="product-action">
@@ -253,6 +247,34 @@
     </div>
 </div>
 <!-- End Most Popular Area -->
+
+<!-- Start Price Range Section -->
+<section class="price-range section">
+    <div class="container">
+        <div class="row justify-content-center">
+            @php
+                $price_ranges = DB::table('price_ranges')->where('status','active')->get();
+            @endphp
+            @foreach($price_ranges as $price)
+                <div class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                    <div class="card price-card">
+                        <img src="{{ $price->photo ?? 'https://via.placeholder.com/400x400' }}" 
+                             class="card-img" alt="Price Range">
+                        <div class="card-img-overlay d-flex flex-column justify-content-center align-items-center text-center">
+                            <h5 class="card-title text-white font-weight-bold">{{ $price->title }}</h5>
+
+                            <p class="text-white">Products Starting Price Rs. {{ $price->min_price }}</p>
+                            <a href="#" class="btn btn-success mt-2">Shop Now</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</section>
+
+<!-- End Price Range Section -->
+
 
 <!-- Start Shop Home List  -->
 <section class="shop-home-list section">
@@ -557,6 +579,94 @@
         #Gslider .carousel-indicators {
         bottom: 70px;
         }
+
+    .category-card {
+    border: none;
+    overflow: hidden;
+    position: relative;
+    width: 180px;
+    height: 200px;
+}
+
+.category-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform .5s ease;  
+}
+
+. .card-img-overlay {
+    background: rgba(0,0,0,0.3);
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%; 
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 15px;
+    
+}
+
+.category-card:hover img {
+    transform: scale(1.1);
+}
+
+.category-card .btn {
+    background: #28a745;
+    border: none;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 10px 10px;
+    color: black;  
+}
+
+.category-card .card-img-overlay h5, 
+.category-card .card-img-overlay p {
+    color: #fff;              
+    font-weight: 400;         
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.6);  
+}
+
+.price-card {
+    border: none;
+    overflow: hidden;
+    position: relative;
+    width: 250px;
+    height: 250px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform .3s ease-in-out;
+}
+.price-card:hover img{
+  transform: scale(1.1);
+}
+.price-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+.price-card .card-img-overlay {
+    background: rgba(0,0,0,0.5);
+}
+.price-card .card-title {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+}
+.price-card .btn {
+    background: #28a745;
+    border: none;
+    font-weight: 700;
+    font-size: 12px;
+    padding: 10px 10px;
+    color: black; 
+}
+
     </style>
 @endpush
 
