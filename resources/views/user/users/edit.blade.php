@@ -24,6 +24,7 @@
           @enderror
         </div>
 
+
         {{-- <div class="form-group">
             <label for="inputPassword" class="col-form-label">Password</label>
           <input id="inputPassword" type="password" name="password" placeholder="Enter password"  value="{{$user->password}}" class="form-control">

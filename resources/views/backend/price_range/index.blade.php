@@ -21,6 +21,7 @@
                             <tr>
                                 <th>S.N.</th>
                                 <th>Title</th>
+                                <th>Slug</th>
                                 <th>Min Price</th>
                                 <th>Max Price</th>
                                 <th>Photo</th>
@@ -33,15 +34,16 @@
                                 <tr>
                                     <td>{{ $priceRange->id }}</td>
                                     <td>{{ $priceRange->title }}</td>
+                                    <td>{{ $priceRange->slug }}</td>
                                     <td>{{ $priceRange->min_price }}</td>
                                     <td>{{ $priceRange->max_price }}</td>
                                     <td>
                                         @if($priceRange->photo)
-                                            <img src="{{ asset($priceRange->photo) }}" class="img-fluid" style="max-width:80px"
-                                                alt="{{ $priceRange->title }}">
+                                            <img src="{{($priceRange->photo) }}" class="img-fluid" style="max-width:80px"
+                                                alt="{{ $priceRange->photo }}">
                                         @else
                                             <img src="{{ asset('backend/img/thumbnail-default.jpg') }}" class="img-fluid"
-                                                style="max-width:80px" alt="default">
+                                                style="max-width:80px" alt="avatar.png">
                                         @endif
                                     </td>
                                     <td>
@@ -94,6 +96,7 @@
                                                 <div class="modal-body">
                                                     <p><strong>ID:</strong> {{ $priceRange->id }}</p>
                                                     <p><strong>Title:</strong> {{ $priceRange->title }}</p>
+                                                    <p><strong>Slug:</strong> {{ $priceRange->slug }}</p>
                                                     <p><strong>Min Price:</strong> {{ $priceRange->min_price }}</p>
                                                     <p><strong>Max Price:</strong> {{ $priceRange->max_price }}</p>
                                                     <p><strong>Status:</strong>

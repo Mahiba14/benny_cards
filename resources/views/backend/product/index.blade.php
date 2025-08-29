@@ -55,7 +55,8 @@
       <td> {{$product->discount}}% OFF</td>
       <td>{{$product->size}}</td>
       <td>{{$product->condition}}</td>
-      <td> {{ucfirst($product->brand->title)}}</td>
+      <td>{{ ucfirst($product->brand?->title ?? 'N/A') }}</td>
+
       <td>
       @if($product->stock > 0)
       <span class="badge badge-primary">{{$product->stock}}</span>
@@ -121,7 +122,7 @@
         <p><strong>Category:</strong> {{$product->cat_info['title']}}
         <sub>{{$product->sub_cat_info->title ?? ''}}</sub>
         </p>
-        <p><strong>Brand:</strong> {{ucfirst($product->brand->title)}}</p>
+        <p><strong>Brand:</strong> {{ucfirst($product->brand->title ?? 'N/A')}}</p>
         <p><strong>Condition:</strong> {{$product->condition}}</p>
         <p><strong>Size:</strong> {{$product->size}}</p>
         </div>

@@ -181,7 +181,7 @@ class CartController extends Controller
     //         if($this->product->discount){
     //             $price=($price-($price*$this->product->discount)/100);
     //         }
-    //         $current_item['price']=$price;
+    //         $current_item['price']=₹price;
 
     //         $cart=session('cart') ? session('cart') : null;
 
