@@ -1,6 +1,6 @@
 @extends('frontend.layouts.master')
 
-@section('title','E-SHOP || About Us')
+@section('title','BENNY CARDS || About Us')
 
 @section('main-content')
 
@@ -61,7 +61,7 @@
 					<div class="single-service">
 						<i class="ti-rocket"></i>
 						<h4>Free shiping</h4>
-						<p>Orders over $100</p>
+						<p>Orders over ₹100</p>
 					</div>
 					<!-- End Single Service -->
 				</div>
@@ -97,5 +97,4 @@
 	</section>
 	<!-- End Shop Services Area -->
 
-	@include('frontend.layouts.newsletter')
 @endsection
